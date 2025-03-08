@@ -24,6 +24,6 @@ errors_in_patch draw_window ()
         window.draw(shape);
         window.display();
     }
-	
+
 	return NOT_ERROR;
 }
