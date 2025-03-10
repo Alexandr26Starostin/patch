@@ -5,7 +5,5 @@
 
 int main ()
 {
-	draw_window ();
-
-	return NOT_ERROR;
+	return draw_window ();
 }

@@ -4,14 +4,17 @@
 #include <SFML/Audio.hpp>
 
 #include "const_in_patch.h"
+#include "hack_program.h"
 #include "window.h"
 
-errors_in_patch draw_window ()
+errors_in_patch_t draw_window ()
 {
+    errors_in_patch_t status = NOT_ERROR;
+
     uint x_size_window = 600;
     uint y_size_window = 600; 
 
-	sf::RenderWindow window(sf::VideoMode({x_size_window, y_size_window}), "SFML works!");
+	sf::RenderWindow window(sf::VideoMode({x_size_window, y_size_window}), "Patch complites hacking!!!");
 
     sf::Texture texture ("./pictures/sunset.png");
 
@@ -29,6 +32,21 @@ errors_in_patch draw_window ()
     sf::Clock clock;
 
     uint quantity_of_pictures_in_gif = 23; //24 - 1
+
+    // sf::Music music;
+
+    //const char* name_file_with_music = "./music/titanic.mp3";
+
+    // if (!music.openFromFile("./music/titanic.mp3"))
+    // {
+    //     printf ("\n\nError in %s:$d\n\nCan not open file with music on file %s\n", __FILE__, __LINE__, name_file_with_music);
+    //     return CAN_NOT_OPEN_MUSIC_FILE;
+    // }
+
+    // music.play();
+
+    status = hack_program ();
+    if (status) {return status;}
 
     while (window.isOpen())
     {
@@ -65,5 +83,7 @@ errors_in_patch draw_window ()
         window.display();
     }
 
-	return NOT_ERROR;
+   //music.pause();
+
+	return status;
 }
