@@ -29,7 +29,7 @@ errors_in_patch_t hack_program ()
 	str_with_file[index + 1] = (char) 0x32;
 	str_with_file[index + 2] = (char) 0x01;
 	str_with_file[index + 3] = (char) 0x88;
-	str_with_file[index + 4] = (char) 0x52;    // jmp 5288:0132
+	str_with_file[index + 4] = (char) 0x52;    // jmp 5288:0132  (to give access)
 
 	index = 0x013a - begin_program_in_com;        //ip - begin_program_in_com
 
@@ -37,7 +37,7 @@ errors_in_patch_t hack_program ()
 	str_with_file[index + 1] = (char) 0x1b;
 	str_with_file[index + 2] = (char) 0x01;
 	str_with_file[index + 3] = (char) 0x88;
-	str_with_file[index + 4] = (char) 0x52;   //jmp 5288:011b
+	str_with_file[index + 4] = (char) 0x52;   //jmp 5288:011b   (to return in main program)
 	
 	printf ("Hacking is complite\n\n");
 
@@ -113,6 +113,7 @@ static errors_in_patch_t write_str_to_file (char** ptr_str)
 	fwrite (*ptr_str, sizeof (char), len_file, file);
 
 	fclose (file);
+	free (*ptr_str);
 
 	return NOT_ERROR;
 }
